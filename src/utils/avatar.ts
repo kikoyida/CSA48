@@ -1,4 +1,5 @@
 const baseUrl = import.meta.env.BASE_URL || '/';
+const pigAvatars = ["/avatars/pig-1.webp","/avatars/pig-2.webp","/avatars/pig-3.webp","/avatars/pig-4.webp","/avatars/pig-5.webp","/avatars/pig-6.jpg","/avatars/pig-7.jpg","/avatars/pig-8.webp","/avatars/pig-9.jpg","/avatars/pig-10.webp","/avatars/pig-11.jpg","/avatars/pig-12.webp"];
 
 export function isImageSrc(src?: string | null): boolean {
   if (!src) return false;
@@ -36,5 +37,5 @@ export function resolveAvatar(
   // Stable per-person selection: rebuilding or sorting never changes a pig.
   let hash = 2166136261;
   for (const char of name || '?') hash = Math.imul(hash ^ char.codePointAt(0)!, 16777619) >>> 0;
-  return { src: resolveSrc(`/avatars/pig-${hash % 12 + 1}.jpg`), fallback };
+  return { src: resolveSrc(pigAvatars[hash % pigAvatars.length]), fallback };
 }
