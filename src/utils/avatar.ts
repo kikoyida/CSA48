@@ -36,5 +36,5 @@ export function resolveAvatar(
   // Stable per-person selection: rebuilding or sorting never changes a pig.
   let hash = 2166136261;
   for (const char of name || '?') hash = Math.imul(hash ^ char.codePointAt(0)!, 16777619) >>> 0;
-  return { src: resolveSrc(`/avatars/pig-${hash % 12 + 1}.svg`), fallback };
+  return { src: resolveSrc(`/avatars/pig-${hash % 12 + 1}.jpg`), fallback };
 }
